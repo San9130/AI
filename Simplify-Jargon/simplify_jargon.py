@@ -2,8 +2,15 @@ from pathlib import Path
 from openai import OpenAI
 import sys
 
+# Connect to OpenAI API
 client = OpenAI()
 
+"""
+Retrieve three user inputs:
+1. The term, or jargon, to be explain (or "quit" to exit).
+2. The desired language to explain the term.
+3. Choice of either text or audio format for the explanation. 
+""" 
 def get_user_input():
     try:
         term = input("Enter a term or phrase to explain in simpler terms (or type 'quit' to exit):\n").strip()
@@ -27,9 +34,11 @@ def get_user_input():
         print(f"Input error: {ve}")
         return None, None, None
 
+# Construct the prompt from the user input.
 def generate_prompt(term, language):
     return f"Provide a simplified, one-sentence explanation of '{term}' in {language}."
 
+# Generate the simplified response in text format, which is sent to standard output (console) by default.
 def text_response(prompt):
     try:
         completion = client.chat.completions.create(
@@ -41,6 +50,7 @@ def text_response(prompt):
     except Exception as e:
         print(f"Error retrieving text response: {e}")
 
+# Generate the simplified response in audio format, which is saved to an MP3 file in the same folder where this script is run.
 def audio_response(prompt):
     speech_file_path = Path(__file__).parent / "answer.mp3"
 
@@ -53,7 +63,7 @@ def audio_response(prompt):
 
         with client.audio.speech.with_streaming_response.create(
             model="gpt-4o-mini-tts",
-            voice="coral",
+            voice="coral", # Currently, 11 different voice options are available from OpenAI. Can change to any desired voice.
             input=text_to_speech,
             instructions="Speak in a neutral tone and explain the term."
         ) as response:
@@ -66,6 +76,7 @@ def audio_response(prompt):
     except Exception as e:
         print(f"Error generating or saving audio: {e}")
 
+# Repeatedly process input and generate responses until the user decides to quit.
 def main():
     while True:
         term, language, output_fmt = get_user_input()
