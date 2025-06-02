@@ -17,13 +17,16 @@
 
 - Download latest version of Python from here: https://www.python.org/downloads/
 - Check for installed Python version:
-  
+
 	Linux/MacOS:
 	bash$ python --version (or python3 --version)
 	
 	Windows:
 	$ python -version
 
+- Install latest OpenAI version from CLI:
+
+	pip install openai
 ## Environment setup:
 
 1. Create an OpenAI API key by going to this link: https://platform.openai.com/api-keys. Login or create an account as required, then click on "Create a new secret key". Set an optional name, project, and desired permissions as needed, then click "Create secret key". Be sure to save this key temporarily to the side.
