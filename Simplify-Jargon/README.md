@@ -4,7 +4,7 @@
 
 ## Features:
 
-- Multilingual explanations
+- Multilingual support for explanations
 - Option to receive output as text or audio
 - Uses OpenAI API
 
