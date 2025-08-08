@@ -64,7 +64,8 @@ The application now features dynamic model selection, intelligently choosing bet
 - **Flask** – Web framework for Python.
 - **OpenAI API (GPT-5 nano/mini/main)** – For generating explanations, dynamically selected for efficiency.
 - **Text-to-Speech Library** – For audio output (e.g., pyttsx3 or gTTS).
-- **Braille Rendering** – Custom logic or library to display Braille format.
+- **Braille Rendering** – Pybraille library to display Braille format.
+- **Tailwind** - CSS framework used for the web UI.
 
 ## Accessibility
 
