@@ -43,6 +43,7 @@ The application now features dynamic model selection, intelligently choosing bet
 
 3. **Set your OpenAI API key:**
    - Create a `.env` file or set the `OPENAI_API_KEY` environment variable.
+   - Generate a new OpenAPI key here: https://platform.openai.com/api-keys. Then assign it to `OPENAI_API_KEY`.
 
 4. **Run the app:**
    ```bash
