@@ -62,7 +62,7 @@ def ai_complexity_score(term):
         completion = client.chat.completions.create(
             model="gpt-5-nano",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=3
+            max_completion_tokens=3
         )
         classification = completion.choices[0].message.content.strip().lower()
         if classification in ["low", "medium", "high"]:
