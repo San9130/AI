@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reading Recommendations</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Personalized Reading</p>
+          <h1>Rediscover what is worth reading again</h1>
+          <p class="subhead">
+            This local app analyzes your Chrome history and suggests older pages that
+            match your recent interests.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="badge">Local only</div>
+          <p>
+            Your history file is read on your machine. Nothing is uploaded anywhere.
+          </p>
+          <p class="muted">Run the server locally and paste the path or profile name below.</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Recommendation Settings</h2>
+          <p>Pick a profile or provide a full History path.</p>
+        </div>
+        <form id="reco-form" class="grid">
+          <label>
+            History path
+            <input
+              type="text"
+              name="history"
+              placeholder="~/Library/Application Support/Google/Chrome/Default/History"
+            />
+          </label>
+          <label>
+            Profile name
+            <input type="text" name="profile" placeholder="Default or Profile 1" />
+          </label>
+          <label>
+            Recent window (days)
+            <input type="number" name="recent_days" value="14" min="1" max="365" />
+          </label>
+          <label>
+            Since date
+            <input type="date" name="since" />
+          </label>
+          <label>
+            Limit
+            <input type="number" name="limit" value="15" min="1" max="100" />
+          </label>
+          <label>
+            Min visits
+            <input type="number" name="min_visits" value="1" min="1" max="50" />
+          </label>
+          <label>
+            Exclude hosts (comma separated)
+            <input type="text" name="exclude_hosts" placeholder="docs.google.com, drive.google.com" />
+          </label>
+          <label class="wide">
+            Exclude URL pattern (regex)
+            <input type="text" name="exclude_url_pattern" placeholder="utm_|/url\?q=" />
+          </label>
+          <div class="toggle-row">
+            <label class="toggle">
+              <input type="checkbox" name="use_arxiv" checked />
+              <span>Use arXiv</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" name="use_crossref" checked />
+              <span>Use Crossref</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" name="use_semantic_scholar" checked />
+              <span>Use Semantic Scholar</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" name="no_reading_filter" />
+              <span>Disable reading filter</span>
+            </label>
+          </div>
+          <div class="actions">
+            <button type="submit">Generate Recommendations</button>
+            <button type="button" id="reset-btn" class="ghost">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="results">
+        <div class="results-header">
+          <h2>New Recommendations</h2>
+          <p id="status">Ready when you are.</p>
+        </div>
+        <div class="sources" id="sources"></div>
+        <div id="results"></div>
+      </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
